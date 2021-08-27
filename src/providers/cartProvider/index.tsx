@@ -1,6 +1,12 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-interface Product {}
+interface Product {
+  name: string;
+  image_url: string;
+  price: number;
+  description: string;
+  id: number;
+}
 
 interface CartProviderProps {
   children: ReactNode;
@@ -32,3 +38,4 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     </CartContext.Provider>
   );
 };
+export const useCart = () => useContext(CartContext);
