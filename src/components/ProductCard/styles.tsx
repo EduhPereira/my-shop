@@ -11,7 +11,7 @@ export const Card = styled.div`
   padding: 10px;
   margin: 16px 0;
   width: 220px;
-  height: 500px;
+  height: 460px;
   text-align: center;
   font-family: monospace;
   border-radius: 5px;
@@ -21,6 +21,8 @@ export const Card = styled.div`
   }
   img {
     height: 300px;
+    width: 80%;
+    margin: 0 auto;
     border-radius: 5px;
   }
 `;
@@ -40,6 +42,6 @@ export const Button = styled.button<ButtonStyledProps>`
   ${(props) =>
     props.isSelected &&
     css`
-      background-color: red;
+      background-color: #f37676;
     `}
 `;
