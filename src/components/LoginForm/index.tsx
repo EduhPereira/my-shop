@@ -5,6 +5,12 @@ import { Form } from "./styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+interface FormModel {
+  username: string;
+  email: string;
+  password: string;
+}
+
 export const LoginForm = () => {
   const history = useHistory();
 
@@ -17,7 +23,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormModel>({
     resolver: yupResolver(schema),
   });
 
