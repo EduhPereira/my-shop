@@ -17,7 +17,7 @@ export const SignupForm = () => {
     api
       .post("register", data)
       //   .then((response) => console.log(response))
-      .then((_) => history.push("/login"))
+      .then((_) => history.push("/"))
       .catch((e) => console.log("Erro"));
   });
 
