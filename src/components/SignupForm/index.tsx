@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { Form } from "./styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { useUser } from "../../providers/userProvider";
 
 interface FormModel {
   username: string;

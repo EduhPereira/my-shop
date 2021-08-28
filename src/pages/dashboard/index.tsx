@@ -9,8 +9,10 @@ import {
 } from "./styles";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import { useUser } from "../../providers/userProvider";
 
 export const Dashboard = () => {
+  const { setIsLogged } = useUser();
   const [currentComponent, setCurrentComponent] = useState<String>("Products");
   const history = useHistory();
 
@@ -20,6 +22,8 @@ export const Dashboard = () => {
 
   const handleLogoff = () => {
     history.push("/");
+    setIsLogged(false);
+    localStorage.clear();
   };
 
   return (

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Form } from "./styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useUser } from "../../providers/userProvider";
 
 interface FormModel {
   username: string;
@@ -12,6 +13,8 @@ interface FormModel {
 }
 
 export const LoginForm = () => {
+  const { setIsLogged } = useUser();
+
   const history = useHistory();
 
   const schema = yup.object().shape({
@@ -30,9 +33,10 @@ export const LoginForm = () => {
   const onSubmit = handleSubmit((data) => {
     api
       .post("login", data)
-      // .then((response) =>
-      //   localStorage.setItem("token", JSON.stringify(response.data.accessToken))
-      // )
+      .then((response) =>
+        localStorage.setItem("token", JSON.stringify(response.data.accessToken))
+      )
+      .then((_) => setIsLogged(true))
       .then((_) => history.push("/dashboard"))
       .catch((e) => console.log("Erro"));
   });
