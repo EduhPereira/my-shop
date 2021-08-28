@@ -1,5 +1,6 @@
 import { useCart } from "../../providers/cartProvider";
 import { Card, Button } from "./styles";
+import { toast } from "react-toastify";
 
 interface Product {
   name: string;
@@ -24,11 +25,23 @@ export const ProductCard = ({ product, isSelected }: ProductCardProps) => {
       <p>{description}</p>
       <div>Price: R${price}</div>
       {isSelected ? (
-        <Button isSelected={true} onClick={() => removeProduct(product)}>
+        <Button
+          isSelected={true}
+          onClick={() => {
+            removeProduct(product);
+            toast.success("Produto Removido");
+          }}
+        >
           remove
         </Button>
       ) : (
-        <Button isSelected={false} onClick={() => addProduct(product)}>
+        <Button
+          isSelected={false}
+          onClick={() => {
+            addProduct(product);
+            toast.success("Produto Adicionado");
+          }}
+        >
           add
         </Button>
       )}
