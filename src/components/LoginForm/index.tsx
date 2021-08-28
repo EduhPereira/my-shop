@@ -2,15 +2,24 @@ import { api } from "../../services/api";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { Form } from "./styles";
-
-type FormModel = {
-  email: string;
-  password: string;
-};
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const LoginForm = () => {
   const history = useHistory();
-  const { register, handleSubmit } = useForm<FormModel>();
+
+  const schema = yup.object().shape({
+    email: yup.string().email("*Email Inválido").required("*Campo obrigatório"),
+    password: yup.string().required("*Campo obrigatório"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = handleSubmit((data) => {
     api
@@ -25,17 +34,15 @@ export const LoginForm = () => {
   return (
     <Form onSubmit={onSubmit}>
       <div>
-        <label htmlFor="email">Email</label>
-        <input
-          {...register("email")}
-          required
-          id="email"
-          name="email"
-          type="text"
-        />
+        <label htmlFor="email">
+          Email <span>{errors.email?.message}</span>
+        </label>
+        <input {...register("email")} id="email" name="email" type="text" />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">
+          Password <span>{errors.password?.message}</span>
+        </label>
         <input
           {...register("password")}
           id="password"
