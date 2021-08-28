@@ -10,6 +10,8 @@ import {
 import { useState } from "react";
 import { useHistory } from "react-router";
 import { useUser } from "../../providers/userProvider";
+import { CgLogOff, CgShoppingCart } from "react-icons/cg";
+import { BiStore } from "react-icons/bi";
 
 export const Dashboard = () => {
   const { setIsLogged } = useUser();
@@ -30,10 +32,14 @@ export const Dashboard = () => {
     <>
       <Header>
         <ProductsBtn onClick={() => changeComponent("Products")}>
-          Products
+          <BiStore />
         </ProductsBtn>
-        <CartBtn onClick={() => changeComponent("Cart")}>Cart</CartBtn>
-        <LogoffBtn onClick={handleLogoff}>Logoff</LogoffBtn>
+        <CartBtn onClick={() => changeComponent("Cart")}>
+          <CgShoppingCart />
+        </CartBtn>
+        <LogoffBtn onClick={handleLogoff}>
+          <CgLogOff />
+        </LogoffBtn>
       </Header>
       <CurrentComponent>{currentComponent}</CurrentComponent>
       {currentComponent === "Products" ? <ProductsList /> : <CartList />}
