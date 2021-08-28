@@ -12,6 +12,7 @@ import { useHistory } from "react-router";
 import { useUser } from "../../providers/userProvider";
 import { CgLogOff, CgShoppingCart } from "react-icons/cg";
 import { BiStore } from "react-icons/bi";
+import Banner from "../../assets/banner.jpg";
 
 export const Dashboard = () => {
   const { setIsLogged } = useUser();
@@ -41,7 +42,10 @@ export const Dashboard = () => {
           <CgLogOff />
         </LogoffBtn>
       </Header>
-      <CurrentComponent>{currentComponent}</CurrentComponent>
+      <CurrentComponent>
+        <img src={Banner} alt="" />
+        <span>{currentComponent}</span>
+      </CurrentComponent>
       {currentComponent === "Products" ? <ProductsList /> : <CartList />}
     </>
   );

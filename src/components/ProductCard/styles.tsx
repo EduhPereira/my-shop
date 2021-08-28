@@ -1,8 +1,18 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 interface ButtonStyledProps {
   isSelected: boolean;
 }
+
+const appear = keyframes`
+    from{
+        opacity:0;
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px)
+    }
+`;
 
 export const Card = styled.div`
   display: flex;
@@ -15,6 +25,7 @@ export const Card = styled.div`
   font-family: monospace;
   border-radius: 5px;
   gap: 8px;
+  animation: ${appear} 0.8s linear;
 
   h1 {
     font-size: 1rem;
