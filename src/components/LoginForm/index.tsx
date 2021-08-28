@@ -3,19 +3,21 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { Form } from "./styles";
 
-type Profile = {
+type FormModel = {
   email: string;
   password: string;
 };
 
 export const LoginForm = () => {
   const history = useHistory();
-  const { register, handleSubmit } = useForm<Profile>();
+  const { register, handleSubmit } = useForm<FormModel>();
 
   const onSubmit = handleSubmit((data) => {
     api
       .post("login", data)
-      //   .then((response) => console.log(response))
+      // .then((response) =>
+      //   localStorage.setItem("token", JSON.stringify(response.data.accessToken))
+      // )
       .then((_) => history.push("/dashboard"))
       .catch((e) => console.log("Erro"));
   });

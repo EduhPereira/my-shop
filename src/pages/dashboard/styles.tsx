@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-  margin: 0;
+  margin: 12px 0;
   padding: 0;
   display: flex;
   gap: 12px;
@@ -14,6 +14,8 @@ export const CurrentComponent = styled.h1`
   justify-content: center;
   align-items: center;
   font-family: monospace;
+  color: #303030;
+  margin: 12px 0;
 `;
 
 const Button = styled.button`

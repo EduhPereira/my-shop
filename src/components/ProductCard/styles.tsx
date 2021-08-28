@@ -7,14 +7,14 @@ interface ButtonStyledProps {
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
   padding: 10px;
   margin: 16px 0;
   width: 220px;
-  height: 460px;
+  height: 440px;
   text-align: center;
   font-family: monospace;
   border-radius: 5px;
+  gap: 8px;
 
   h1 {
     font-size: 1rem;

@@ -17,6 +17,11 @@ export const Dashboard = () => {
   const changeComponent = (component: string) => {
     setCurrentComponent(component);
   };
+
+  const handleLogoff = () => {
+    history.push("/");
+  };
+
   return (
     <>
       <Header>
@@ -24,7 +29,7 @@ export const Dashboard = () => {
           Products
         </ProductsBtn>
         <CartBtn onClick={() => changeComponent("Cart")}>Cart</CartBtn>
-        <LogoffBtn onClick={() => history.push("/")}>Logoff</LogoffBtn>
+        <LogoffBtn onClick={handleLogoff}>Logoff</LogoffBtn>
       </Header>
       <CurrentComponent>{currentComponent}</CurrentComponent>
       {currentComponent === "Products" ? <ProductsList /> : <CartList />}
