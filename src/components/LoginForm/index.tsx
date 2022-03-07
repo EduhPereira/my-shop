@@ -5,6 +5,7 @@ import { Form } from "./styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useUser } from "../../providers/userProvider";
+import { toast } from "react-toastify";
 
 interface FormModel {
   username: string;
@@ -38,7 +39,7 @@ export const LoginForm = () => {
       )
       .then((_) => setIsLogged(true))
       .then((_) => history.push("/dashboard"))
-      .catch((e) => console.log("Erro"));
+      .catch((e) => toast.error("incorrect Email and/or Password"));
   });
 
   return (
