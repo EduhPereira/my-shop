@@ -11,8 +11,7 @@ export const Login = () => {
         <img src={login} alt="" />
       </Col1>
       <Col2>
-        <img src={logo} alt="" />
-        <h1>Kenzie Shop</h1>
+        <h1>My Shop</h1>
         <LoginForm />
         <div>
           Dont have an account yet?{" "}
